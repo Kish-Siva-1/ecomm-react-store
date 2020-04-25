@@ -1,7 +1,7 @@
 import React from 'react'
 import './header.scss'
 import { Link } from 'react-router-dom'
-import {ReactComponent as Logo} from '../../assets/crown.svg' //will turn crown.svg into a reactcomponent called logo
+import { ReactComponent as Logo } from '../../assets/crown.svg' //will turn crown.svg into a reactcomponent called logo
 import { auth } from '../../firebase/firebase.js';
 
 const Header = ({ currentUser }) => (
@@ -16,12 +16,15 @@ const Header = ({ currentUser }) => (
             <Link className='option' to='/shop'>
                 CONTACT
             </Link>
-            {
-                currentUser ? 
-                <div className="option" onClick={() => auth.signOut()}>SIGN OUT</div>
-                :
-                <Link className="option" to="/signin"></Link>
-            }
+            {currentUser ? (
+                <div className='option' onClick={() => auth.signOut()}>
+                    SIGN OUT
+                </div>
+            ) : (
+                    <Link className='option' to='/signin'>
+                        SIGN IN
+                    </Link>
+                )}
         </div>
     </div>
 )
